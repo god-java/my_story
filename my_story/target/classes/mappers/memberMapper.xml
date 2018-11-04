@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+   
+<mapper namespace="com.tech.story.dao.MemberDAO">
+	<select id="member_info" parameterType="String" resultType="MemberDTO">
+		select * from st_member where id=#{id}
+	</select>
+	<select id="overlap_id" parameterType="String" resultType="int">
+		select count(*) from st_member where id=#{id}
+	</select>
+	<insert id="join_ok" parameterType="MemberDTO">
+		INSERT INTO ST_MEMBER VALUES((SELECT 'M' || LPAD(NVL(SUBSTR(MAX(MEMBER_CD),2)+1,1),10,'0') FROM ST_MEMBER),
+		#{id},
+		#{password},
+		#{name},
+		#{email},
+		default)
+	</insert>
+	<select id="login_ok" parameterType="MemberDTO" resultType="int">
+		SELECT COUNT(*) FROM ST_MEMBER WHERE ID=#{id} AND PASSWORD=#{password}
+	</select>
+</mapper>

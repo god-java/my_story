@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+html, body, div, ul, li, span, a {
+	margin: 0;
+	padding: 0;
+	outline: 0;
+	font-size: 12px;
+	text-align: center;
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}
+
+table{border-collapse:collapse;}
+
+.st_button {
+	width: 100px;
+	height: 30px;
+	background: #B2CCFF;
+	color: white;
+	border: 1px solid #B2CCFF;
+	border-radius: 5px;
+	cursor: pointer;
+	font-weight: bolder;
+}
+
+.st_text, .st_password, .st_select, .st_email {
+	width: 60%;
+	height: 30px;
+}
+
+.left {
+	width: 20%;
+	height: 50px;
+	border:1px solid #D8D8D8;
+}
+
+.right {
+	width: 80%;
+	height: 50px;
+	text-align:left;
+	border:1px solid #D8D8D8;
+}
+
+.warn {
+	width: 15px;
+	height: 15px;
+	border: 1px solid #850000;
+	background: #850000;
+	color: white;
+	border-radius: 100%;
+	line-height: 15px;
+	font-weight: bolder;
+	position:absolute;
+	display:none;
+}
