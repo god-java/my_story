@@ -11,7 +11,7 @@
 #make_story_body{width:800px; margin:100px auto;}
 #ms_table{width:100%;}
 .st_text, .st_select{margin-left:10px;}
-</style>
+</style> 
 </head>
 <body>
 	<div id="make_story">
@@ -137,6 +137,16 @@ $(document).ready(function(){
 	})
 	$(document).on('click','#make_story_ok',function(){
 		jQuery.ajaxSettings.traditional = true
+		var jsonData = {
+				'st_name' : [$("#st_name"),'스토리명을', 'text']
+		}
+		if(isEmpty(jsonData)){
+			return false
+		}
+		if(arr.length<1){
+			alert("관심분야는 한개 이상 선택해주세요.")
+			return false
+		}
 		$.ajax({
 			url : 'make_story_ok',
 			type : 'get',
