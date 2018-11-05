@@ -7,5 +7,9 @@
 	<typeAliases>
 		<typeAlias type="com.tech.story.dto.MemberDTO" alias="MemberDTO"></typeAlias>
 		<typeAlias type="com.tech.story.dto.CodeDTO" alias="CodeDTO"></typeAlias>
+		<typeAlias type="com.tech.story.dto.StoryDTO" alias="StoryDTO"></typeAlias>
+		<typeAlias type="com.tech.story.dto.StoryDetailDTO" alias="StoryDetailDTO"></typeAlias>
+		<typeAlias type="com.tech.story.dto.InterestDTO" alias="InterestDTO"></typeAlias>
+		
 	</typeAliases>
 </configuration>

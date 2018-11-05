@@ -1,6 +1,6 @@
 package com.tech.story.dto;
 
-public class MemberDTO {
+public class MemberDTO extends ObjectDTO {
 
 	private String member_cd;
 	private String id;

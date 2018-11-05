@@ -1,6 +1,6 @@
 package com.tech.story.dto;
 
-public class CodeDTO {
+public class CodeDTO extends ObjectDTO {
 
 	private String code_cd;
 	private String code_name;

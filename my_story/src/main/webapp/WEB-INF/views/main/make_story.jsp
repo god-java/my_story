@@ -25,7 +25,7 @@
 						스토리 이름
 					</td>
 					<td class="right">
-						<input type="text" id="st_name" class="st_text">
+						<input type="text" id="story_nm" class="st_text">
 					</td>
 				</tr>
 				<tr>
@@ -95,7 +95,7 @@ $(document).ready(function(){
 		})
 	})
 
-	var arr = new Array();
+	var arr = new Array();	//관심 분야를 담기 위한 배열
 	$(document).on('click','#interest_add',function(){
 		var code_cd = $("#interest_detail").val()
 		var code_name = $("#interest_detail option:selected").html()
@@ -103,14 +103,14 @@ $(document).ready(function(){
 		console.log(code_name)
 		var html = "";
 		
-		$.each(arr,function(i){
+		$.each(arr,function(i){		//이미 추가된 경우를 확인하기 위해
 			if(arr[i] == code_cd){
 				alert("이미 추가된 분야입니다.")
-				exit = true
+				exit = true			//true가 되어 빠져나감
 				return false
 			}
 		})
-		if(exit){
+		if(exit){					// 빠져나감
 			return false
 		}
 		arr.push(code_cd)
@@ -138,7 +138,7 @@ $(document).ready(function(){
 	$(document).on('click','#make_story_ok',function(){
 		jQuery.ajaxSettings.traditional = true
 		var jsonData = {
-				'st_name' : [$("#st_name"),'스토리명을', 'text']
+				'story_nm' : [$("#story_nm"),'스토리명을', 'text']
 		}
 		if(isEmpty(jsonData)){
 			return false
@@ -152,10 +152,16 @@ $(document).ready(function(){
 			type : 'get',
 			data : {
 				'interest' : arr,
-				'st_name' : $("#st_name").val()
+				'story_nm' : $("#story_nm").val()
 			},
 			success : function(data){
-				
+				var res = data
+				if(res>0){
+					alert("스토리가 생성되었습니다.")
+					location.href="story_main"
+				}else{
+					alert("이미 스토리가 존재합니다.")
+				}
 			}
 		})
 	})

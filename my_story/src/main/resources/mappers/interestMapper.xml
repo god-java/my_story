@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tech.story.dao.InterestDAO">
+	<insert id="add_interest" parameterType="InterestDTO">
+		INSERT INTO ST_INTEREST VALUES
+		(
+			(SELECT 'I' || LPAD(NVL(SUBSTR(MAX(INTEREST_CD),2)+1,1),8,'0') FROM ST_INTEREST),
+			#{member_cd},
+			(SELECT STORY_CD FROM ST_STORY WHERE MEMBER_CD = #{member_cd}),
+			#{interest_nm}
+		)
+	</insert>
+</mapper>

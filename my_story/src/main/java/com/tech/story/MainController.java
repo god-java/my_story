@@ -31,19 +31,18 @@ public class MainController extends ObjectController {
 	@RequestMapping(value="/find_interest_detail", produces="applicatioin/text; charset=utf-8")
 	@ResponseBody
 	public String find_interest_detail(String up_code) {
-		System.err.println(";;;;;;;;;;;;;;");
 		List<CodeDTO> clist = cs.code_list_kind(up_code);
 		Map<String,Object> map = new HashMap<String,Object>();
 		map.put("clist", clist);
 		return json(map);
 	}
 	
-	@RequestMapping(value="/make_story_ok")
+	/*@RequestMapping(value="/make_story_ok")
 	@ResponseBody
 	public void make_story_ok(@RequestParam(value="interest") List<String> interest) {
 		for(int i=0; i<interest.size(); i++) {
 			System.err.println(interest.get(i));
 		}
 		System.err.println("!@~!@~");
-	}
+	}*/
 }

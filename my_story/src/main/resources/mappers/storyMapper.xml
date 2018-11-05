@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+    
+<mapper namespace="com.tech.story.dao.StoryDAO">
+	<insert id="make_story" parameterType="StoryDTO">
+		INSERT INTO ST_STORY VALUES
+		(
+			(SELECT 'S' || LPAD(NVL(SUBSTR(MAX(STORY_CD),2)+1,1),8,'0') FROM ST_STORY),
+			#{member_cd},
+			#{story_nm},
+			DEFAULT
+		)
+	</insert>
+	<select id="story_count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ST_STORY WHERE MEMBER_CD = #{member_cd}
+	</select>
+	<select id="story_info" parameterType="String" resultType="StoryDTO">
+		SELECT * FROM ST_MEMBER SM
+		JOIN
+		ST_STORY SS
+		ON
+		SM.MEMBER_CD = SS.MEMBER_CD
+		JOIN
+		ST_STORY_DETAIL SSD
+		ON
+		SS.STORY_CD = SSD.STORY_CD
+		WHERE
+		SM.MEMBER_CD = #{member_cd}
+	</select>
+</mapper>
