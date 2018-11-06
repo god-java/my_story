@@ -18,6 +18,7 @@ public class CodeController extends ObjectController {
 	
 	@RequestMapping(value="/admin_main")
 	public String admin_main(Model m) {
+		List<CodeDTO> clist = cs.code_list();
 		/*m.addAttribute("center","add_code.jsp");*/
 		return path;
 	}

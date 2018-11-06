@@ -3,14 +3,14 @@ package com.tech.story;
 import java.io.IOException;
 import java.util.Map;
 
-import javax.inject.Inject;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.tech.story.service.CategoryService;
 import com.tech.story.service.CodeService;
 import com.tech.story.service.InterestService;
 import com.tech.story.service.MemberService;
@@ -20,17 +20,18 @@ import com.tech.story.service.StoryService;
 @Controller
 public class ObjectController {
 
-	@Inject
+	@Autowired
 	protected MemberService ms;
-	@Inject
+	@Autowired
 	protected CodeService cs;
-	@Inject
+	@Autowired
 	protected StoryService ss;
-	@Inject
+	@Autowired
 	protected StoryDetailService sds;
-	@Inject
+	@Autowired
 	protected InterestService is;
-	
+	@Autowired
+	protected CategoryService cts;
 	public void print(HttpServletResponse resp, int value) {
 		try {
 			resp.getWriter().print(value);

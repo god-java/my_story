@@ -13,29 +13,29 @@ public class MemberDAOImpl implements MemberDAO {
 	@Inject
 	private SqlSessionTemplate sst;
 	
-	private static final String NAMESPACE = "com.tech.story.dao.MemberDAO";
+	private String namespace = "com.tech.story.dao.MemberDAO";
 
 	@Override
 	public MemberDTO member_info(String id) {
 		// TODO Auto-generated method stub
-		return sst.selectOne(NAMESPACE+".member_info",id);
+		return sst.selectOne(namespace+".member_info",id);
 	}
 
 	@Override
 	public int overlap_id(String id) {
 		// TODO Auto-generated method stub
-		return sst.selectOne(NAMESPACE+".overlap_id",id);
+		return sst.selectOne(namespace+".overlap_id",id);
 	}
 
 	@Override
 	public void join_ok(MemberDTO mdto) {
-		sst.insert(NAMESPACE+".join_ok",mdto);
+		sst.insert(namespace+".join_ok",mdto);
 	}
 
 	@Override
 	public int login_ok(MemberDTO mdto) {
 		// TODO Auto-generated method stub
-		return sst.selectOne(NAMESPACE+".login_ok",mdto);
+		return sst.selectOne(namespace+".login_ok",mdto);
 	}
 	
 }

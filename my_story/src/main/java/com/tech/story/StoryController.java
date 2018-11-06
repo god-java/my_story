@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tech.story.dto.CategoryDTO;
 import com.tech.story.dto.InterestDTO;
 import com.tech.story.dto.StoryDTO;
 
@@ -43,6 +44,8 @@ public class StoryController extends ObjectController {
 	@RequestMapping(value="/story_main")
 	public String stroy_main(Model m,String member_cd) {
 		StoryDTO sdto = ss.story_info(member_cd);
+		List<CategoryDTO> ctlist = cts.cate_list(sdto.getStory_cd());
+		m.addAttribute("ctlist", ctlist);
 		m.addAttribute("sdto", sdto);
 		return path(member_cd);
 	}

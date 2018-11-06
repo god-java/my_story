@@ -13,12 +13,12 @@ public class InterestDAOImpl implements InterestDAO {
 	@Inject
 	private SqlSessionTemplate sst;
 	
-	private static final String NAMESPACE = "com.tech.story.dao.InterestDAO";
+	private String namespace = "com.tech.story.dao.InterestDAO";
 
 	@Override
 	public void add_intereset(InterestDTO idto) {
 		// TODO Auto-generated method stub
-		sst.insert(NAMESPACE+".add_interest",idto);
+		sst.insert(namespace+".add_interest",idto);
 	}
 	
 }

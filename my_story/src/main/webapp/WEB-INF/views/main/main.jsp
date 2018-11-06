@@ -11,8 +11,8 @@
 <title>Insert title here</title>
 <style type="text/css">
 #header{width:100%; height:50px; border-bottom:1px solid #D8D8D8;}
-#header ul{width:100%; height:50px; line-height:50px;}
-#header li{width:10%; height:30px; text-align:center;}
+#header ul{width:100%; height:50px; line-height:50px; text-align:left;}
+#header li{width:10%; height:30px; text-align:center; display:inline-block;}
 #top{width:100%; height:200px; line-height:200px; border-bottom:1px solid #D8D8D8;}
 #top a{font-size:50px; font-weight:bolder;}
 </style>
@@ -23,14 +23,17 @@
 			<li>
 				<c:choose>
 					<c:when test="${member_cd == null }">
-						<a href="join">회원가입</a>
-						<a href="login">로그인</a>
+						<li><a href="join">회원가입</a></li>
+						<li><a href="login">로그인</a></li>
 					</c:when>
 					<c:otherwise>
-						<a href="logout">로그아웃</a>
-						<a href="make_story">스토리 만들기</a>
+						<li><a href="logout">로그아웃</a></li>
+						<li><a href="make_story">스토리 만들기</a></li>
 					</c:otherwise>
 				</c:choose>
+			</li>
+			<li>
+				<a href="story_main?member_cd=${member_cd }">내 스토리</a>
 			</li>
 		</ul>
 	</div>

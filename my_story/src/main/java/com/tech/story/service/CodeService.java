@@ -9,5 +9,4 @@ public interface CodeService {
 	public CodeDTO code_info(String code_cd);
 	public void add_code(CodeDTO cdto);
 	public List<CodeDTO> code_list_kind(String up_code);
-
 }

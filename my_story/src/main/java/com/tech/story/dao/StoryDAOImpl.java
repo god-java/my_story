@@ -13,24 +13,24 @@ public class StoryDAOImpl implements StoryDAO {
 	@Inject
 	private SqlSessionTemplate sst;
 	
-	private static final String NAMESPACE = "com.tech.story.dao.StoryDAO";
+	private String namespace = "com.tech.story.dao.StoryDAO";
 	
 	@Override
 	public void make_story(StoryDTO sdto) {
 		// TODO Auto-generated method stub
-		sst.insert(NAMESPACE+".make_story",sdto);
+		sst.insert(namespace+".make_story",sdto);
 	}
 
 	@Override
 	public int story_count(String member_cd) {
 		// TODO Auto-generated method stub
-		return sst.selectOne(NAMESPACE+".story_count",member_cd);
+		return sst.selectOne(namespace+".story_count",member_cd);
 	}
 
 	@Override
 	public StoryDTO story_info(String member_cd) {
 		// TODO Auto-generated method stub
-		return sst.selectOne(NAMESPACE+".story_info",member_cd);
+		return sst.selectOne(namespace+".story_info",member_cd);
 	}
 
 }
