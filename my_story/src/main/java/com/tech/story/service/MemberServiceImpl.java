@@ -36,4 +36,10 @@ public class MemberServiceImpl implements MemberService {
 		return mdao.login_ok(mdto);
 	}
 
+	@Override
+	public MemberDTO member_info_type_cd(String member_cd) {
+		// TODO Auto-generated method stub
+		return mdao.member_info_type_cd(member_cd);
+	}
+
 }

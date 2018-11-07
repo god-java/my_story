@@ -43,10 +43,9 @@ public class StoryController extends ObjectController {
 	
 	@RequestMapping(value="/story_main")
 	public String stroy_main(Model m,String member_cd) {
-		StoryDTO sdto = ss.story_info(member_cd);
-		List<CategoryDTO> ctlist = cts.cate_list(sdto.getStory_cd());
+		List<CategoryDTO> ctlist = cts.cate_list(member_cd);
 		m.addAttribute("ctlist", ctlist);
-		m.addAttribute("sdto", sdto);
+		story_info_main(m, member_cd);		//스토리에 대한 모든 정보...
 		return path(member_cd);
 	}
 }

@@ -15,22 +15,38 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		)
 	</insert>
 	<select id="cate_list" parameterType="String" resultType="CategoryDTO">
-		SELECT CATE_CD, STORY_CD,
-		LPAD(' ',2*(LEVEL-1)) || CATE_NM AS CATE_NM,
-		CATE_LV, UP_CATE_CD FROM ST_CATEGORY
+		SELECT
+		SC.CATE_CD, SC.MEMBER_CD,
+		LPAD(' ',2*(LEVEL-1)) || SC.CATE_NM AS CATE_NM,
+		SC.CATE_LV, SC.UP_CATE_CD,
+		SM.ID, SM.NAME,
+		SS.STORY_NM
+		FROM
+		ST_CATEGORY SC
+		JOIN
+		ST_MEMBER SM
+		ON
+		SC.MEMBER_CD = SM.MEMBER_CD
+		JOIN
+		ST_STORY SS
+		ON
+		SM.MEMBER_CD = SS.MEMBER_CD
 		WHERE
-		STORY_CD = #{story_cd}
+		SC.MEMBER_CD = #{member_cd}
 		START WITH
 		UP_CATE_CD
 		IS NULL
 		CONNECT BY
 		PRIOR
-		CATE_CD = UP_CATE_CD
+		SC.CATE_CD = SC.UP_CATE_CD
 	</select>
 	<delete id="delete_cate" parameterType="String">
-		DELETE FROM ST_CATEGORY WHERE CATE_CE = #{cate_cd}
+		DELETE FROM ST_CATEGORY WHERE CATE_CD = #{cate_cd}
 	</delete>
 	<update id="modify_cate" parameterType="String">
 		UPDATE ST_CATE SET CATE_NM = #{cate_nm}
 	</update>
+	<select id="cate_info" parameterType="String" resultType="CategoryDTO">
+		SELECT * FROM ST_CATEGORY WHERE CATE_CD = #{cate_cd}
+	</select>
 </mapper>

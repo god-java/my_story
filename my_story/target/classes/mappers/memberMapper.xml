@@ -5,10 +5,10 @@
    
 <mapper namespace="com.tech.story.dao.MemberDAO">
 	<select id="member_info" parameterType="String" resultType="MemberDTO">
-		select * from st_member where id=#{id}
+		SELECT * FROM ST_MEMBER WHERE id = #{id}
 	</select>
 	<select id="overlap_id" parameterType="String" resultType="int">
-		select count(*) from st_member where id=#{id}
+		SELECT COUNT(*) FROM ST_MEMBER WHERE ID=#{id}
 	</select>
 	<insert id="join_ok" parameterType="MemberDTO">
 		INSERT INTO ST_MEMBER VALUES((SELECT 'M' || LPAD(NVL(SUBSTR(MAX(MEMBER_CD),2)+1,1),10,'0') FROM ST_MEMBER),
@@ -20,5 +20,8 @@
 	</insert>
 	<select id="login_ok" parameterType="MemberDTO" resultType="int">
 		SELECT COUNT(*) FROM ST_MEMBER WHERE ID=#{id} AND PASSWORD=#{password}
+	</select>
+	<select id="member_info_type_cd" parameterType="String" resultType="MemberDTO">
+		SELECT * FROM ST_MEMBER WHERE MEMBER_CD = #{member_cd}
 	</select>
 </mapper>

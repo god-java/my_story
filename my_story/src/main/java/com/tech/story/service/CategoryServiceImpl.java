@@ -15,9 +15,9 @@ public class CategoryServiceImpl implements CategoryService {
 	private CategoryDAO ctdao;
 	
 	@Override
-	public List<CategoryDTO> cate_list(String story_cd) {
+	public List<CategoryDTO> cate_list(String member_cd) {
 		// TODO Auto-generated method stub
-		return ctdao.cate_list(story_cd);
+		return ctdao.cate_list(member_cd);
 	}
 
 	@Override
@@ -36,6 +36,12 @@ public class CategoryServiceImpl implements CategoryService {
 	public void modify_cate(String cate_cd) {
 		// TODO Auto-generated method stub
 		ctdao.modify_cate(cate_cd);
+	}
+
+	@Override
+	public CategoryDTO cate_info(String cate_cd) {
+		// TODO Auto-generated method stub
+		return ctdao.cate_info(cate_cd);
 	}
 
 }

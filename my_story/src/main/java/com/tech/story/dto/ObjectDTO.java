@@ -22,6 +22,55 @@ public class ObjectDTO {
 	private int cate_lv;
 	private String cate_nm;
 	private String up_cate_cd;
+	private String board_cd;
+	private String board_title;
+	private String board_content;
+	private String board_file;
+	private String board_image;
+	private String write_date;
+	private String profile_image;
+	public String getProfile_image() {
+		return profile_image;
+	}
+	public void setProfile_image(String profile_image) {
+		this.profile_image = profile_image;
+	}
+	public String getBoard_cd() {
+		return board_cd;
+	}
+	public void setBoard_cd(String board_cd) {
+		this.board_cd = board_cd;
+	}
+	public String getBoard_title() {
+		return board_title;
+	}
+	public void setBoard_title(String board_title) {
+		this.board_title = board_title;
+	}
+	public String getBoard_content() {
+		return board_content;
+	}
+	public void setBoard_content(String board_content) {
+		this.board_content = board_content;
+	}
+	public String getBoard_file() {
+		return board_file;
+	}
+	public void setBoard_file(String board_file) {
+		this.board_file = board_file;
+	}
+	public String getBoard_image() {
+		return board_image;
+	}
+	public void setBoard_image(String board_image) {
+		this.board_image = board_image;
+	}
+	public String getWrite_date() {
+		return write_date;
+	}
+	public void setWrite_date(String write_date) {
+		this.write_date = write_date;
+	}
 	public String getCate_cd() {
 		return cate_cd;
 	}

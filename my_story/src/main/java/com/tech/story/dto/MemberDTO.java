@@ -8,6 +8,13 @@ public class MemberDTO extends ObjectDTO {
 	private String name;
 	private String email;
 	private String join_date;
+	private String profile_image;
+	public String getProfile_image() {
+		return profile_image;
+	}
+	public void setProfile_image(String profile_image) {
+		this.profile_image = profile_image;
+	}
 	public String getMember_cd() {
 		return member_cd;
 	}

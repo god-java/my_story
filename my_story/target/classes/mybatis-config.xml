@@ -11,6 +11,7 @@
 		<typeAlias type="com.tech.story.dto.StoryDetailDTO" alias="StoryDetailDTO"></typeAlias>
 		<typeAlias type="com.tech.story.dto.InterestDTO" alias="InterestDTO"></typeAlias>
 		<typeAlias type="com.tech.story.dto.CategoryDTO" alias="CategoryDTO"></typeAlias>
+		<typeAlias type="com.tech.story.dto.BoardDTO" alias="BoardDTO"></typeAlias>
 		
 	</typeAliases>
 </configuration>

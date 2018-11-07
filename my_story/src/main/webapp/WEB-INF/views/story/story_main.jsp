@@ -20,10 +20,18 @@
 #profile_image_body{width:100%; height:200px; border:1px solid black;}
 #cate_ul{width:100%; height:70%; margin-top:20px; overflow-y:scroll;}
 #cate_ul li{width:100%; height:30px; color:white; text-align:left; line-height:30px;}
+#add_cate_mask{width:0; height:0; position:absolute; left:0; top:0; background:black; display:none;}
 </style>
 </head>
+<script type="text/javascript">
+function board_list(cate_cd,member_cd){
+	location.href="board_list?cate_cd="+cate_cd+"&member_cd="+member_cd
+}
+</script>
 <body>
-	<div style="width:350px; height:250px; position:fixed; top:30%; left:40%; border:1px solid black; background:white;">
+	<div id="add_cate_mask">
+	</div>
+	<div id="add_cate_body" style="width:350px; height:250px; position:fixed; top:30%; left:40%; border:1px solid black; background:white; display:none;">
 		<div style="width:80%; height:80%; position:relative; top:10%; left:10%;">
 			<h2>카테고리 등록</h2>
 			<div style="width:100%; height:50px; line-height:50px;">
@@ -39,26 +47,27 @@
 				<input type="text" id="cate_nm" class="st_text" placeholder="카테고리 이름">
 			</div>
 			<div style="width:100%; height:50px; line-height:50px;">
-				<input type="button" id="add_cate_btn" class="st_button" value="등록">
+				<input type="button" id="add_cate_btn" class="st_button" value="등록"> 
+				<input type="button" id="add_cate_cancel" class="st_button" value="취소">
 			</div>
 		</div>
 	</div>
 	<div id="left_menu">
 		<div id="menu_body">
 			<div style="width:100%; height:30px;">
-				카테고리 등록
+				<a href="#none" id="add_cate_body_view">카테고리 등록</a>
 			</div>
 			<div id="profile_image_body">
-				
+				<img src="resources/profile_image/${mdto.profile_image}" style="width:100%; height:100%;">
 			</div>
 			<ul id="cate_ul">
 				<c:forEach var="ctlist" items="${ctlist }">
 					<li>
-						&nbsp;&nbsp;&nbsp;ㅇ
+						&nbsp;&nbsp;&nbsp;
 						<c:forEach begin="1" end="${ctlist.cate_lv }">
 							━
 						</c:forEach>
-						<a href="#">${ctlist.cate_nm }</a>
+						<a href="board_list?member_cd=${mdto.member_cd}&cate_cd=${ctlist.cate_cd}">${ctlist.cate_nm }</a>
 					</li>
 				</c:forEach>
 			</ul>
@@ -83,13 +92,27 @@
 		<a href="main">${sdto.story_nm }</a>
 	</div>
 	<div id="center">
+		<jsp:include page="${center }"/>
 	</div>
 	<div id="footer">
 	
 	</div>
 </body>
 <script type="text/javascript">
+
 $(document).ready(function(){
+	$(document).on('click','#add_cate_body_view',function(){
+		var width = $(window).width()
+		var height = $(window).height()
+		console.log(width) 
+		$("#add_cate_mask").css({'width':width,'height':height})
+		$("#add_cate_mask").fadeTo('slow',0.5)
+		$("#add_cate_body").show()
+	})
+	$(document).on('click','#add_cate_cancel',function(){
+		$("#add_cate_body").hide()
+		$("#add_cate_mask").hide()
+	})
 	$(document).on('click','#add_cate_btn',function(){
 		var cate_lv = $("#up_cate_cd option:selected").attr("level")	// 카테고리 레벨찾기
 		var jsonData = {												// 유효성 검사 준비

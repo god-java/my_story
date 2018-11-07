@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tech.story.dao.BoardDAO">
+	<insert id="write_board" parameterType="BoardDTO">
+	INSERT INTO ST_BOARD VALUES(
+		(SELECT 'B' || LPAD(NVL(SUBSTR(MAX(BOARD_CD),2)+1,1),8,'0') FROM ST_BOARD),
+		#{member_cd},
+		#{cate_cd},
+		#{board_title},
+		#{board_content},
+		#{board_file},
+		#{board_image},
+		DEFAULT
+	)
+	</insert>
+	
+	<update id="modify_board" parameterType="String">
+		UPDATE ST_BOARD
+		SET
+		BOARD_TITLE = #{board_title},
+		BOARD_CONTENT = #{board_title}
+	</update>
+	
+	<delete id="delete_board" parameterType="String">
+	
+	</delete>
+	
+	<select id="board_list" parameterType="BoardDTO" resultType="BoardDTO">
+		SELECT * FROM ST_BOARD SB
+		JOIN
+		ST_MEMBER SM
+		ON
+		SB.MEMBER_CD = SM.MEMBER_CD
+		JOIN
+		ST_CATEGORY SC
+		ON
+		SB.CATE_CD = SC.CATE_CD
+		WHERE
+		SB.MEMBER_CD = #{member_cd}
+		AND
+		SB.CATE_CD = #{cate_cd}
+	</select>
+	
+	<select id="board_info" parameterType="String" resultType="BoardDTO">
+		SELECT * FROM ST_BOARD SB
+		JOIN
+		ST_MEMBER SM
+		ON
+		SB.MEMBER_CD = SM.MEMBER_CD
+		JOIN
+		ST_CATEGORY SC
+		ON
+		SB.CATE_CD = SC.CATE_CD
+		WHERE
+		SB.BOARD_CD = #{board_cd}
+	</select>
+</mapper>

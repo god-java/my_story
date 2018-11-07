@@ -8,4 +8,5 @@ public interface MemberDAO {
 	public int overlap_id(String id);
 	public void join_ok(MemberDTO mdto);
 	public int login_ok(MemberDTO mdto);
+	public MemberDTO member_info_type_cd(String member_cd);
 }

@@ -37,5 +37,11 @@ public class MemberDAOImpl implements MemberDAO {
 		// TODO Auto-generated method stub
 		return sst.selectOne(namespace+".login_ok",mdto);
 	}
+
+	@Override
+	public MemberDTO member_info_type_cd(String member_cd) {
+		// TODO Auto-generated method stub
+		return sst.selectOne(namespace+".member_info_type_cd",member_cd);
+	}
 	
 }
