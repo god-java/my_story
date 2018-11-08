@@ -14,6 +14,7 @@
 <body>
 	<div id="board_list">
 		<h1>${cate_nm }</h1>
+		<input type="button" class="st_button" value="게시물 등록" onclick="location.href='write_board?member_cd=${mdto.member_cd}'">
 		<div id="board_list_div">
 			<div id="board_list_body">
 			

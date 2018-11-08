@@ -81,7 +81,7 @@ public class ObjectController {
 		m.addAttribute("cate_nm",ctdto.getCate_nm());
 		m.addAttribute("ctlist",ctlist);
 	}
-	public void story_info_main(Model m, String member_cd) {			// story_main페이지 요청시.. 카테고리 이름이 필요 없음..
+	public void story_info(Model m, String member_cd) {			// 카테고리 이름이 필요 없을때..
 		List<CategoryDTO> ctlist = cts.cate_list(member_cd);	// 카테고리 목록
 		MemberDTO mdto = ms.member_info_type_cd(member_cd);		// 회원정보
 		StoryDTO sdto = ss.story_info(member_cd);				//스토리 정보

@@ -45,7 +45,9 @@ public class StoryController extends ObjectController {
 	public String stroy_main(Model m,String member_cd) {
 		List<CategoryDTO> ctlist = cts.cate_list(member_cd);
 		m.addAttribute("ctlist", ctlist);
-		story_info_main(m, member_cd);		//스토리에 대한 모든 정보...
+		story_info(m, member_cd);		//스토리에 대한 모든 정보...
 		return path(member_cd);
 	}
+	
+	
 }

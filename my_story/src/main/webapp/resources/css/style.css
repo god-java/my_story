@@ -38,7 +38,10 @@ table{border-collapse:collapse;}
 	width: 60%;
 	height: 30px;
 }
-
+.st_textarea{
+	width:80%;
+	height:400px;
+}
 .left {
 	width: 20%;
 	height: 50px;

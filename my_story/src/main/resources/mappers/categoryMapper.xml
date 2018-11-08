@@ -8,7 +8,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		INSERT INTO ST_CATEGORY VALUES
 		(
 			(SELECT 'CT' || LPAD(NVL(SUBSTR(MAX(CATE_CD),3)+1,1),10,'0') FROM ST_CATEGORY),
-			(SELECT STORY_CD FROM ST_STORY WHERE MEMBER_CD = #{member_cd}),
+			#{member_cd},
 			#{cate_nm},
 			#{cate_lv},
 			#{up_cate_cd}
