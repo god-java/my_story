@@ -29,6 +29,83 @@ public class ObjectDTO {
 	private String board_image;
 	private String write_date;
 	private String profile_image;
+	private int read_count;
+	private String upload_image_cd;
+	private String upload_date;
+	private String board_sub_content;
+	private int like_count;
+	private String like_cd;
+	private String like_date;
+	private String like_check;
+	private int comment_count;
+	private int start_row;
+	private int end_row;
+	public int getStart_row() {
+		return start_row;
+	}
+	public void setStart_row(int start_row) {
+		this.start_row = start_row;
+	}
+	public int getEnd_row() {
+		return end_row;
+	}
+	public void setEnd_row(int end_row) {
+		this.end_row = end_row;
+	}
+	public int getComment_count() {
+		return comment_count;
+	}
+	public void setComment_count(int comment_count) {
+		this.comment_count = comment_count;
+	}
+	public String getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(String like_check) {
+		this.like_check = like_check;
+	}
+	public String getLike_cd() {
+		return like_cd;
+	}
+	public void setLike_cd(String like_cd) {
+		this.like_cd = like_cd;
+	}
+	public String getLike_date() {
+		return like_date;
+	}
+	public void setLike_date(String like_date) {
+		this.like_date = like_date;
+	}
+	public int getLike_count() {
+		return like_count;
+	}
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
+	}
+	public String getBoard_sub_content() {
+		return board_sub_content;
+	}
+	public void setBoard_sub_content(String board_sub_content) {
+		this.board_sub_content = board_sub_content;
+	}
+	public String getUpload_image_cd() {
+		return upload_image_cd;
+	}
+	public void setUpload_image_cd(String upload_image_cd) {
+		this.upload_image_cd = upload_image_cd;
+	}
+	public String getUpload_date() {
+		return upload_date;
+	}
+	public void setUpload_date(String upload_date) {
+		this.upload_date = upload_date;
+	}
+	public int getRead_count() {
+		return read_count;
+	}
+	public void setRead_count(int read_count) {
+		this.read_count = read_count;
+	}
 	public String getProfile_image() {
 		return profile_image;
 	}

@@ -21,6 +21,8 @@
 #cate_ul{width:100%; height:70%; margin-top:20px; overflow-y:scroll;}
 #cate_ul li{width:100%; height:30px; color:white; text-align:left; line-height:30px;}
 #add_cate_mask{width:0; height:0; position:absolute; left:0; top:0; background:black; display:none;}
+
+#footer{width:100%; height:300px; line-height:300px;}
 </style>
 </head>
 <script type="text/javascript">
@@ -95,7 +97,7 @@ function board_list(cate_cd,member_cd){
 		<jsp:include page="${center }"/>
 	</div>
 	<div id="footer">
-	
+		<h2>MY_STORY</h2>
 	</div>
 </body>
 <script type="text/javascript">

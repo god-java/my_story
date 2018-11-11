@@ -44,4 +44,10 @@ public class BoardDAOImpl implements BoardDAO {
 		return sst.selectOne(namespace+".board_info",board_cd);
 	}
 
+	@Override
+	public void read_count_up(String board_cd) {
+		// TODO Auto-generated method stub
+		sst.update(namespace+".read_count_up",board_cd);
+	}
+
 }

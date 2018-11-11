@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tech.story.dao.CommentDAO">
+	<insert id="write_comment" parameterType="CommentDTO">
+		INSERT INTO ST_COMMENT VALUES
+		(
+			(SELECT 'CM' || LPAD(NVL(SUBSTR(MAX(COMMENT_CD),3)+1,1),10,'0') FROM ST_COMMENT),
+			#{member_cd},
+			#{board_cd},
+			#{comment_content},
+			DEFAULT
+		)
+	</insert>
+	<select id="comment_list" parameterType="CommentDTO" resultType="CommentDTO">
+		SELECT * FROM(SELECT A.*, ROWNUM RNUM FROM(SELECT * FROM ST_COMMENT SC
+		JOIN
+		ST_MEMBER SM
+		ON
+		SC.MEMBER_CD = SM.MEMBER_CD
+		WHERE
+		SC.BOARD_CD = #{board_cd}
+		ORDER BY
+		SC.COMMENT_CD DESC)A)
+		WHERE
+		RNUM
+		BETWEEN
+		#{start_row}
+		AND
+		#{end_row}
+	</select>
+	<select id="comment_count" parameterType="String" resultType="int">
+		SELECT COUNT(*) FROM ST_COMMENT WHERE BOARD_CD = #{board_cd}
+	</select>
+</mapper>

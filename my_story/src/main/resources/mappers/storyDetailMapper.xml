@@ -7,7 +7,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert_story_detail" parameterType="String">
 		INSERT INTO ST_STORY_DETAIL VALUES
 		(
-			(SELECT 'SD' || LPAD(NVL(SUBSTR(MAX(STORY_DETAIL_CD),2)+1,1),8,'0') FROM ST_STORY_DETAIL),
+			(SELECT 'SD' || LPAD(NVL(SUBSTR(MAX(STORY_DETAIL_CD),3)+1,1),8,'0') FROM ST_STORY_DETAIL),
 			#{member_cd},
 			(SELECT STORY_CD FROM ST_STORY WHERE MEMBER_CD=#{member_cd}),
 			DEFAULT

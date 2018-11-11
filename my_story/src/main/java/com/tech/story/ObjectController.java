@@ -13,15 +13,19 @@ import org.springframework.ui.Model;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tech.story.dto.CategoryDTO;
+import com.tech.story.dto.CommentDTO;
 import com.tech.story.dto.MemberDTO;
 import com.tech.story.dto.StoryDTO;
 import com.tech.story.service.BoardService;
 import com.tech.story.service.CategoryService;
 import com.tech.story.service.CodeService;
+import com.tech.story.service.CommentService;
 import com.tech.story.service.InterestService;
+import com.tech.story.service.LikeService;
 import com.tech.story.service.MemberService;
 import com.tech.story.service.StoryDetailService;
 import com.tech.story.service.StoryService;
+import com.tech.story.service.UploadImageService;
 
 @Controller
 public class ObjectController {
@@ -40,6 +44,13 @@ public class ObjectController {
 	protected CategoryService cts;
 	@Autowired
 	protected BoardService bs;
+	@Autowired
+	protected UploadImageService us;
+	@Autowired
+	protected LikeService ls;
+	@Autowired
+	protected CommentService cms;
+	
 	public void print(HttpServletResponse resp, int value) {
 		try {
 			resp.getWriter().print(value);
@@ -88,5 +99,42 @@ public class ObjectController {
 		m.addAttribute("sdto",sdto);
 		m.addAttribute("mdto",mdto);
 		m.addAttribute("ctlist",ctlist);
+	}
+	protected void comment_method(Map<String,Object> map, Integer page_num, CommentDTO cmdto) {	//댓글 리스트, 카운트박스
+		//카운트박스 시작//
+				int page_size = 2;
+				Integer current_page = page_num;
+				if(page_num==null) {
+					current_page = 1;
+				}
+				int start_row = (current_page-1)*page_size+1;
+				int end_row = current_page*page_size;
+				int count = cms.comment_count(cmdto.getBoard_cd());
+				
+				if(count>0) {
+					int page_count = count/page_size+(count%page_size==0?0:1);
+					int start_page;
+					if(current_page%10==0) {
+						start_page = ((current_page/10)-1)*10+1;
+					}else {
+						start_page = (int)(current_page/10)*10+1;
+					}
+					int page_block = 10;
+					int end_page = start_page+page_block-1;
+					if(end_page>page_count) {
+						end_page = page_count;
+					}
+					System.err.println(start_row+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22");
+					System.err.println(end_row+"@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@22");
+					cmdto.setStart_row(start_row);
+					cmdto.setEnd_row(end_row);
+					map.put("start_page", start_page);
+					map.put("end_page", end_page);
+					map.put("current_page", current_page);
+					map.put("page_count", page_count);
+					map.put("page_block", page_block);
+					List<CommentDTO> clist = cms.comment_list(cmdto);
+					map.put("clist", clist);
+				}
 	}
 }

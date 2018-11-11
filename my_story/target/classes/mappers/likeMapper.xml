@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tech.story.dao.LikeDAO">
+	<insert id="add_like" parameterType="LikeDTO">
+		INSERT INTO ST_LIKE VALUES
+		(
+			(SELECT 'L' || LPAD(NVL(SUBSTR(MAX(LIKE_CD),2)+1,1),10,'0') FROM ST_LIKE),
+			#{member_cd},
+			#{board_cd},
+			DEFAULT
+		)
+	</insert>
+	<select id="like_count" parameterType="LikeDTO" resultType="int">
+		SELECT COUNT(*) FROM ST_LIKE
+		<where>
+			<trim prefixOverrides="AND">
+				<if test="member_cd != null">
+					MEMBER_CD = #{member_cd}
+				</if>
+				AND
+				BOARD_CD = #{board_cd}
+			</trim>
+		</where>
+	</select>
+	<delete id="delete_like" parameterType="LikeDTO">
+		DELETE FROM ST_LIKE
+		WHERE
+		MEMBER_CD = #{member_cd}
+		AND
+		BOARD_CD = #{board_cd}
+	</delete>
+</mapper>

@@ -158,7 +158,7 @@ $(document).ready(function(){
 				var res = data
 				if(res>0){
 					alert("스토리가 생성되었습니다.")
-					location.href="story_main"
+					location.href="story_main?member_cd=${member_cd}"
 				}else{
 					alert("이미 스토리가 존재합니다.")
 				}

@@ -41,7 +41,13 @@ public class BoardServiceImpl implements BoardService {
 	@Override
 	public BoardDTO board_info(String board_cd) {
 		// TODO Auto-generated method stub
-		return board_info(board_cd);
+		return bdao.board_info(board_cd);
+	}
+
+	@Override
+	public void read_count_up(String board_cd) {
+		// TODO Auto-generated method stub
+		bdao.read_count_up(board_cd);
 	}
 
 }

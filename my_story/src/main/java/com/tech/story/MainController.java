@@ -22,7 +22,7 @@ public class MainController extends ObjectController {
 	
 	@RequestMapping(value="/make_story")
 	public String make_story(Model m) {
-		List<CodeDTO> clist = cs.code_list_kind("C0002");
+		List<CodeDTO> clist = cs.code_list_kind("C0001");
 		m.addAttribute("clist",clist);
 		m.addAttribute("center","make_story.jsp");
 		return path;

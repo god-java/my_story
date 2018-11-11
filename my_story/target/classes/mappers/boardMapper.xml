@@ -9,9 +9,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		(SELECT 'B' || LPAD(NVL(SUBSTR(MAX(BOARD_CD),2)+1,1),8,'0') FROM ST_BOARD),
 		#{member_cd},
 		#{cate_cd},
+		(SELECT UP_CATE_CD FROM ST_CATEGORY WHERE CATE_CD = #{cate_cd}),
 		#{board_title},
+		#{board_sub_content},
 		#{board_content},
 		#{board_file},
+		#{read_count},
 		#{board_image},
 		DEFAULT
 	)
@@ -42,6 +45,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		SB.MEMBER_CD = #{member_cd}
 		AND
 		SB.CATE_CD = #{cate_cd}
+		OR
+		SB.UP_CATE_CD = #{cate_cd}
 	</select>
 	
 	<select id="board_info" parameterType="String" resultType="BoardDTO">
@@ -57,4 +62,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		WHERE
 		SB.BOARD_CD = #{board_cd}
 	</select>
+	
+	<update id="read_count_up" parameterType="String">
+		UPDATE ST_BOARD SET
+		READ_COUNT = READ_COUNT+1
+		WHERE
+		BOARD_CD = #{board_cd}
+	</update>
 </mapper>

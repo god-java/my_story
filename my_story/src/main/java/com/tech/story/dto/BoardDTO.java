@@ -9,6 +9,34 @@ public class BoardDTO extends ObjectDTO {
 	private String board_file;
 	private String board_image;
 	private String write_date;
+	private int read_count;
+	private String board_sub_content;
+	private int like_count;
+	private String like_check;
+	public String getLike_check() {
+		return like_check;
+	}
+	public void setLike_check(String like_check) {
+		this.like_check = like_check;
+	}
+	public int getLike_count() {
+		return like_count;
+	}
+	public void setLike_count(int like_count) {
+		this.like_count = like_count;
+	}
+	public String getBoard_sub_content() {
+		return board_sub_content;
+	}
+	public void setBoard_sub_content(String board_sub_content) {
+		this.board_sub_content = board_sub_content;
+	}
+	public int getRead_count() {
+		return read_count;
+	}
+	public void setRead_count(int read_count) {
+		this.read_count = read_count;
+	}
 	public String getBoard_cd() {
 		return board_cd;
 	}

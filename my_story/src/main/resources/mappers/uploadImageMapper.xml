@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.tech.story.dao.UploadImageDAO">
+	<insert id="upload_image" parameterType="UploadImageDTO">
+		INSERT INTO ST_UPLOAD_IMAGE VALUES
+		(
+			(SELECT 'U' || LPAD(NVL(SUBSTR(MAX(UPLOAD_IMAGE_CD),2)+1,1),10,'0') FROM ST_UPLOAD_IMAGE),
+			#{member_cd},
+			#{board_cd},
+			DEFAULT
+		)
+	</insert>
+</mapper>

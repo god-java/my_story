@@ -10,4 +10,5 @@ public interface BoardDAO {
 	public void delete_board(String board_cd);
 	public List<BoardDTO> board_list(BoardDTO bdto);
 	public BoardDTO board_info(String board_cd);
+	public void read_count_up(String board_cd);
 }
